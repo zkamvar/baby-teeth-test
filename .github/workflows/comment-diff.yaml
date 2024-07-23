@@ -27,8 +27,7 @@ jobs:
           echo "" >> $GITHUB_ENV
           echo "## `admin-schema.json`" >> $GITHUB_ENV
           echo "" >> $GITHUB_ENV
-          echo "```diffEOF" >> $GITHUB_ENV
-          echo "<<EOF" >> $GITHUB ENV
+          echo "```diff" >> $GITHUB_ENV
           echo $(diff -u $old/admin-schema.json $new/admin-schema.json) >> $GITHUB_ENV
           echo "```" >> $GITHUB_ENV
           echo "" >> $GITHUB_ENV
