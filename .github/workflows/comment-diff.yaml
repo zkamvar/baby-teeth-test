@@ -33,8 +33,7 @@ jobs:
           echo $(diff -u $old/target-schema.json $new/target-schema.json) >> $GITHUB_ENV
           echo '```' >> $GITHUB_ENV
           echo '' >> $GITHUB_ENV
-      - name: "Comment on PR"
-        id: "comment-diff"
+      - name: 'Comment on PR'
         uses: carpentries/actions/comment-diff@5d73d6a34b013488264890868d8eeab1edffdf2e
         with:
           pr: ${{ github.event.number }}
