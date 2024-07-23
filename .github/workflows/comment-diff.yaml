@@ -1,7 +1,8 @@
 name: "Generate New Spec Diff"
-  on:
-    issue_comment:
-      types: [created]
+
+on:
+  issue_comment:
+    types: [created]
 
 jobs:
   comment-changed-workflow:
