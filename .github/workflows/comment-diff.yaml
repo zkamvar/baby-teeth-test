@@ -14,28 +14,28 @@ jobs:
     steps:
       - name: "Check Out Main Branch"
         uses: actions/checkout@v4
-      - name: 'Record DIFF'
+      - name: "Record DIFF"
         id: dl
         run: |
-          echo 'body<<EOF' >> $GITHUB_ENV
-          echo '' >> $GITHUB_ENV
+          echo "body<<EOF" >> $GITHUB_ENV
+          echo "" >> $GITHUB_ENV
           old=$(ls -d */ | sort | tail -n 2 | head -n 1)
           new=$(ls -d */ | sort | tail -n 1)
-          echo 'Here are your diffs for this pull request' >> $GITHUB_ENV
-          echo '' >> $GITHUB_ENV
-          echo '## `admin-schema.json`' >> $GITHUB_ENV
-          echo '' >> $GITHUB_ENV
-          echo '```diff' >> $GITHUB_ENV
+          echo "Here are your diffs for this pull request" >> $GITHUB_ENV
+          echo "" >> $GITHUB_ENV
+          echo "## `admin-schema.json`" >> $GITHUB_ENV
+          echo "" >> $GITHUB_ENV
+          echo "```diff" >> $GITHUB_ENV
           echo $(diff -u $old/admin-schema.json $new/admin-schema.json) >> $GITHUB_ENV
-          echo '```' >> $GITHUB_ENV
-          echo '' >> $GITHUB_ENV
-          echo '## `target-schema.json`' >> $GITHUB_ENV
-          echo '' >> $GITHUB_ENV
-          echo '```diff' >> $GITHUB_ENV
+          echo "```" >> $GITHUB_ENV
+          echo "" >> $GITHUB_ENV
+          echo "## `target-schema.json`" >> $GITHUB_ENV
+          echo "" >> $GITHUB_ENV
+          echo "```diff" >> $GITHUB_ENV
           echo $(diff -u $old/target-schema.json $new/target-schema.json) >> $GITHUB_ENV
-          echo '```' >> $GITHUB_ENV
-          echo '' >> $GITHUB_ENV
-      - name: 'Comment on PR'
+          echo "```" >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
+      - name: "Comment on PR"
         uses: carpentries/actions/comment-diff@5d73d6a34b013488264890868d8eeab1edffdf2e
         with:
           pr: ${{ github.event.number }}
